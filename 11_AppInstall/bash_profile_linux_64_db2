@@ -1,0 +1,59 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+unset USERNAME
+export PATH=$PATH:$HOME/bin
+export LANG=en_US.utf-8
+export TMP=/tmp
+export TMPDIR=$TMP
+ulimit -c 10240000000
+
+# ******* ORACLEœ‡πÿ≈‰÷√ **********
+#export ORACLE_BASE=/grg/oracle
+#export ORACLE_HOME=$ORACLE_BASE/OracleHome
+export DB2_HOME=/opt/ibm/db2/V9.7
+#export ORACLE_SID=feel
+#export PATH=$PATH:$ORACLE_HOME/bin:/usr/sbin
+export PATH=$PATH:$DB2_HOME/bin:/usr/sbin
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib:/lib64:/usr/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DB2_HOME/lib:/lib64:/usr/lib64
+#export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+export CLASSPATH=$ORACLE_HOME/JRE:$DB2_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+
+# ******* FEEL Switch≈‰÷√ *********
+export FEEL_BASE=$HOME/Online
+export FEEL_HOME=$FEEL_BASE
+export FEEL_BIN=$FEEL_HOME/bin
+export FEEL_LIB=$FEEL_HOME/lib
+export FEEL_LIB_COM=$FEEL_LIB/comlib
+export FEEL_INC=$FEEL_HOME/src/inc
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FEEL_LIB:$FEEL_LIB_COM
+export PATH=$PATH:$FEEL_BIN:/usr/sbin:/usr/bin:/usr/local/bin
+
+# =============for all makefile begin======================
+#linux for g++
+GC="g++ -fPIC -g -Wall " 
+GX="gcc -fPIC -g -Wall "
+OS_INC="/usr/include"
+OS_LIB="-ldl -lpthread"
+OS_LIBPATH="-L/usr/lib64/"
+OS_FLAG="-DLINUX"
+export GC GX OS_INC OS_LIB OS_LIBPATH OS_FLAG
+
+#linux for ORACLE
+#DB_MK=""
+#DB_INC="-I$ORACLE_HOME/rdbms/demo -I$ORACLE_HOME/rdbms/public -I$ORACLE_HOME/plsql/public -I$ORACLE_HOME/network/public"
+DB_LIB="-ldb2 -lrt"
+DB_LIBPATH="-L$DB2_HOME/lib64 -L\$(LIBHOME) -L\$(RDBMSLIB)"
+DB_FLAG="-D__ENTERPRISE__ -D__MYSQL__"
+export DB_MK DB_INC DB_LIB DB_LIBPATH DB_FLAG 
+
+# =============for all makefile end========================
+
+export NLS_LANG=AMERICAN_AMERICA.UTF8
+
